@@ -1,0 +1,8 @@
+# Backend
+Backend/MarkdownCreationAndRetrieval/.idea
+Backend/MarkdownCreationAndRetrieval/node_modules
+Backend/MarkdownCreationAndRetrieval/Configurations/config.env
+
+# Frontend
+Frontend/markdown/node_modules
+Frontend/markdown/build

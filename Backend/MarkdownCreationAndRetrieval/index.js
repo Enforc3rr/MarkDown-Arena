@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const router = require("./Router/router");
+const router = require("./Router/mdRouter");
 const database = require("./Configurations/DatabaseConfig");
 const dotenv = require("dotenv");
 dotenv.config({
@@ -8,7 +8,7 @@ dotenv.config({
 });
 
 app.use(express.json());
-app.use("/api/v1",router);
+app.use("/api/v1/md",router);
 
 database()
     .then(()=>console.log("Connected To Database"))

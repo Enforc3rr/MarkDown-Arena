@@ -7,7 +7,7 @@ const {createMd,findMd} = require("../Controller/MdController");
 mdRouter.route("/save")
     .post(upload.none(),createMd);
 
-mdRouter.route("/find/:_id")
+mdRouter.route("/find/:id")
     .get(findMd);
 
 module.exports = mdRouter;

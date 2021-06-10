@@ -17,8 +17,10 @@ exports.createMd = async (req,res)=>{
 
 exports.findMd = async (req,res)=>{
 
-    const data = await mdDatabase.findById(req.params._id);
+    const data = await mdDatabase.findById(req.params.id);
     console.log(data.markDownCode);
 
     return res.status(200).send(data);
+
+
 }

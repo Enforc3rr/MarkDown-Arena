@@ -12,7 +12,7 @@ export default function GetPosts() {
     return (
             
             posts.map(post =>(
-            <div key={post._id} className="card-body card shadow p-3 mb-5 mr-5 ml-5 bg-white rounded" style={{width: "18rem"}}>
+            <div key={post._id} className="card-body card shadow p-3 mb-3 mr-3 ml-3 bg-white rounded" style={{width: "18rem"}}>
             <h5 className="card-title text-center" style={{textDecoration: "underline" , textDecorationColor:"#128C7E"}}>{post.title}</h5>
             <p className="card-text text-center">{post.description}</p>
             <p className="card-text text-center">{post.topic}</p>

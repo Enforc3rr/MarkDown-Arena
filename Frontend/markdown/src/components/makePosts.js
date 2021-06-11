@@ -1,7 +1,8 @@
-import React , {useState,useRef} from 'react';
+import React , {useState} from 'react';
 import MDEditor from '@uiw/react-md-editor';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {post} from "axios";
+import Swal from 'sweetalert2'
 
 
 export default function MakeMarkDown() {
@@ -9,7 +10,6 @@ export default function MakeMarkDown() {
     const [description,setDescription]=useState("");
     const [topic,setTopic] = useState("");
     const [text,setText] = useState("");
-    const inputRef = useRef(null);
 
     const markdowndetails = {};
     const onCreate = () => {
@@ -34,7 +34,8 @@ export default function MakeMarkDown() {
 
         post(url, formData, config)
         .then((response) => {
-            alert("Post Created");
+            console.log(response);
+            Swal.fire(response.data.message);
         });
 
     }
@@ -69,7 +70,7 @@ export default function MakeMarkDown() {
             <div className="container border text-center mt-5">
                 <label><h4 className="mt-2">Editor</h4></label> 
                 <MDEditor value={text} onChange={setText} commands={[]} />
-                <button type="button" ref={inputRef} onClick={onCreate} className="btn btn-outline-success mt-3">Create</button>
+                <button type="button" onClick={onCreate} className="btn btn-outline-success mt-3">Create</button>
             </div>
         </div>
     );

@@ -11,16 +11,18 @@ exports.createMd = async (req,res)=>{
 
    return res.status(201).json({
        success : true ,
-       message : "Markdown Created"
+       message : "Post Created"
    });
 }
 
 exports.findMd = async (req,res)=>{
 
     const data = await mdDatabase.findById(req.params.id);
-    console.log(data.markDownCode);
 
     return res.status(200).send(data);
+}
 
-
+exports.findAllMds = async (req,res)=>{
+    const data = await mdDatabase.find({});
+    return res.status(200).json(data);
 }

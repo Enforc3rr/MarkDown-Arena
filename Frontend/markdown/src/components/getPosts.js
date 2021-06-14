@@ -17,7 +17,7 @@ export default function GetPosts() {
             <p className="card-text text-center">{post.description}</p>
             <p className="card-text text-center">{post.topic}</p>
             <div className="card-foote text-center">
-            <a href={`http://localhost:8000/api/v1/md/find/${post._id}`} target={"_blank"}  rel = "noopener noreferrer"
+            <a href={`http://localhost:3000/viewpost/${post._id}`} target={"_blank"}  rel = "noopener noreferrer"
             className="card-link">Click Here To View Post</a>
             </div>
             </div>

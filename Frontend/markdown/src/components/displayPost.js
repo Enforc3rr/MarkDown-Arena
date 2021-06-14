@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
+import {useParams } from "react-router-dom";
 import {get} from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -13,9 +14,10 @@ export default function DisplayPost() {
     const [uploadedBy,setUploadedBy] = useState("Test User");
     const [likes , setLikes] = useState(0);
 
+    let {postID} = useParams();
 
     useEffect( () => {
-        get(`http://localhost:8000/api/v1/md/find/60c276b6c4812538f49b96f7`)
+        get(`http://localhost:8000/api/v1/md/find/${postID}`)
         .then(res => {
             setMarkDownCode(res.data.markDownCode);
             setTitle(res.data.title);

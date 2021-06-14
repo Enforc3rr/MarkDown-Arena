@@ -28,8 +28,20 @@ const mdSchema = new mongoose.Schema({
         addedBy : {
             type : mongoose.Schema.Types.ObjectId ,
             ref : "User"
+        },
+        actualComment : {
+            type : String ,
+            min : [10]
+        } ,
+        dateOfAddition : {
+            type : Date,
+            default: Date.now()
         }
-    }]
+    }],
+    dateOfCreation : {
+        type : Date ,
+        default : Date.now()
+    }
 });
 
 module.exports = mongoose.model("markdown",mdSchema);

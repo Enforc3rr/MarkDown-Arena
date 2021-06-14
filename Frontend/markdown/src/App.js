@@ -17,8 +17,9 @@ export default function App() {
         <Route path="/viewposts" component={DisplayPosts} />
       </Switch>   
       <Switch>
-        <Route path="/viewpost" component={DisplayPost} />
+        <Route path="/viewpost/:postID" children={<DisplayPost />} />
       </Switch>   
     </Router>
   );
 }
+

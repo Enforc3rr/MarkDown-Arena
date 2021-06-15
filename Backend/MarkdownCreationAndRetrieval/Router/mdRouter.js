@@ -5,15 +5,16 @@ const upload = multer();
 const {createMd,findMd,findAllMds,searchMdByTitle,searchMdByTopic,deleteMd} = require("../Controller/mdController");
 const {verifyToken} = require("../Configurations/verifyToken");
 
-mdRouter.route("/save")
-    .post(upload.none(),createMd);
 
 mdRouter.route("/find/:id")
     .get(findMd);
-
 mdRouter.route("/findall")
     .get(findAllMds);
 
+
+
+mdRouter.route("/save")
+    .post(upload.none(),createMd);
 mdRouter.route("/search/:keyword")
     .post(searchMdByTitle);
 

@@ -11,7 +11,9 @@ export default function DisplayPost() {
     const [markDownCode,setMarkDownCode] = useState("");
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
+    // eslint-disable-next-line 
     const [uploadedBy,setUploadedBy] = useState("Test User");
+    // eslint-disable-next-line 
     const [likes , setLikes] = useState(0);
 
     let {postID} = useParams();

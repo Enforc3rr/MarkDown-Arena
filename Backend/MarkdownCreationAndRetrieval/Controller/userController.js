@@ -14,7 +14,6 @@ exports.createUser = async (req,res) =>{
 
     req.body.password = await bcrypt.hash(req.body.password , salt);
 
-    console.log(req.body);
     await userDatabase.create(req.body);
     return res.status(201).json({
         success : true ,
@@ -26,7 +25,7 @@ exports.userLogin = async (req,res)=>{
     const userFound = await userDatabase.findOne({username : req.body.username});
     if(!userFound) return res.status(400).json({
         success : false ,
-        message : "Mobile Number Not Found"
+        message : "username Not Found"
     });
     //Validating Password
     const validatePassword = await bcrypt.compare(req.body.password , userFound.password);
@@ -42,6 +41,23 @@ exports.userLogin = async (req,res)=>{
     //Returning Token
     return res.status(200).json({
         success : true,
-        jwt : token,
+        username : userFound.username,
+        jwt : token
     });
+}
+
+exports.fetchAllUsers = async (req,res)=>{
+    const data = await userDatabase.find({});
+
+    return res.status(200).json(data);
+}
+
+exports.checkingForUsername = async (req,res)=>{
+    const user = await userDatabase.findOne({username:req.params.username});
+
+    console.log(user);
+
+    if(user) return res.status(200).json({message : "Username already exists try different username"});
+
+    return res.status(200).json({message : "Username is Available To Be Used"});
 }

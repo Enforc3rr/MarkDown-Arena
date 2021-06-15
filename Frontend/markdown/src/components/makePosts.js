@@ -13,11 +13,7 @@ export default function MakeMarkDown() {
 
     const markdowndetails = {};
     const onCreate = () => {
-        console.log(title);
-        console.log(description);
-        console.log(topic);
-        console.log(text);
-
+  
         markdowndetails.title = title;
         markdowndetails.description = description;
         markdowndetails.topic = topic;

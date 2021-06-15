@@ -24,10 +24,10 @@ const user = new mongoose.Schema({
         type : Date ,
         default : Date.now()
     },
-    postCreatedByUserID : [{
+    postIDsCreatedByUser : [{
         type : String ,
     }],
-    commentsAddedByUserID : [{
+    commentIDsAddedByUser : [{
         type : String
     }]
 });

@@ -2,6 +2,7 @@ const userDatabase = require("../Models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const {userRegistrationValidation} = require("../Configurations/userValidations");
+const {post} = require("axios");
 
 exports.createUser = async (req,res) =>{
     const {error} = userRegistrationValidation(req.body);
@@ -14,7 +15,25 @@ exports.createUser = async (req,res) =>{
 
     req.body.password = await bcrypt.hash(req.body.password , salt);
 
+    await post("http://localhost:8001/api/v1/addusername",{
+        username:req.body.username
+        }, {
+        headers :
+            {
+                "content-type":"application/json"
+            }
+    });
+    await post("http://localhost:8001/api/v1/addemail",{
+        email:req.body.email
+    }, {
+        headers :
+            {
+                "content-type":"application/json"
+            }
+    });
+
     await userDatabase.create(req.body);
+
     return res.status(201).json({
         success : true ,
         message : "User Registered"
@@ -52,12 +71,3 @@ exports.fetchAllUsers = async (req,res)=>{
     return res.status(200).json(data);
 }
 
-exports.checkingForUsername = async (req,res)=>{
-    const user = await userDatabase.findOne({username:req.params.username});
-
-    console.log(user);
-
-    if(user) return res.status(200).json({message : "Username already exists try different username"});
-
-    return res.status(200).json({message : "Username is Available To Be Used"});
-}

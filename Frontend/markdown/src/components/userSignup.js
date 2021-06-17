@@ -8,7 +8,8 @@ export default function UserSignup() {
     const [password,setPassword] = useState("");
     const [passwordCheck ,setPasswordCheck]
      = useState("Password Length Should Be More Than 6 Characters And Should Contain A Number , A Small letter , A Capital Letter and A special Character");
-    const [usernameCheck , setUsernameCheck] = useState("");
+     const [usernameCheck , setUsernameCheck] = useState("");
+     const [emailCheck , setEmailCheck] = useState("");
      
      const signUp = ()=>{
         const data = {
@@ -30,7 +31,7 @@ export default function UserSignup() {
     }
     
     const passwordChecker = (e)=>{
-        setPassword(e.target.value);
+        setPassword(e.target.value.replace(/\s/g, ''));
 
         if(password.length > 6 && password.match("^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\\d]){1,})(?=(.*[\\W]){1,})(?!.*\\s).{6,}")){
             check = true;
@@ -50,9 +51,14 @@ export default function UserSignup() {
     As of now what is happening is that , we have to hit onchange again after finalizing the username which we wanna pick , it makes sense.
     */
     const userNameChecker = (e)=>{
-        setUsername(e.target.value);
-        get(`http://localhost:8000/api/v1/user/usernamecheck/${username}`)
+        setUsername(e.target.value.replace(/\s/g, ''));
+        get(`http://localhost:8001/api/v1/checkusername/${username}`)
         .then(response => setUsernameCheck(response.data.message));
+    }
+    const emailChecker = (e)=>{
+        setEmail(e.target.value.replace(/\s/g, ''));
+        get(`http://localhost:8001/api/v1/checkemail/${email}`)
+        .then(response => setEmailCheck(response.data.message));
     }
     return (
         <div className="container border mt-5 w-50">
@@ -70,7 +76,8 @@ export default function UserSignup() {
                 <label htmlFor="email" className="col-sm-2 col-form-label">Email :</label>
                 <div className="col-sm-10">
                     <input type="email" id = "email"readonly className="form-control" placeholder="example@domain.com" 
-                    value ={email} onChange={e=>setEmail(e.target.value)}/>
+                    value ={email} onChange={e=>emailChecker(e)}/>
+                    <p className="text-muted">{emailCheck}</p>
                 </div>
             </div>
             <div className="form-group row">

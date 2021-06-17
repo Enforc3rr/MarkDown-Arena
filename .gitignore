@@ -3,6 +3,10 @@ Backend/MarkdownCreationAndRetrieval/.idea
 Backend/MarkdownCreationAndRetrieval/node_modules
 Backend/MarkdownCreationAndRetrieval/Configurations/config.env
 
+Backend/indexforemailandusername/.idea
+Backend/indexforemailandusername/node_modules
+Backend/indexforemailandusername/Configurations/config.env
+
 # Frontend
 Frontend/markdown/node_modules
 Frontend/markdown/build

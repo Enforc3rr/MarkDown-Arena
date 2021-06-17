@@ -5,10 +5,12 @@ A Platform like Medium.com or Dev.to but Information is written using markdown.
 ### Things To Implement -
 ##### Backend -
 - ~Login & Sign-up~ 
+- ~Separate Server For Continuous Email And Username Retrieval While Typing~
 - Comments Additional And Retrieval 
 ##### Frontend - 
 - ~Login & Sign-up FE~
 - ~Post Viewing~
+- ~Email And Username Retrieval While Typing~
 - Home Page 
 - Proper Formatting of Navbar
 - Implementation Of Redux For StateManagment.

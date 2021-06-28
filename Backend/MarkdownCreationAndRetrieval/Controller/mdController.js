@@ -6,7 +6,9 @@ exports.createMd = async (req,res)=>{
 
     req.body = JSON.parse(req.body.markdowndetails);
     req.body.markDownCode = markDownCode;
-    req.body.uploadedBy = req.user.username;
+    // req.body.uploadedBy = req.user.username;
+
+    req.body.uploadedBy = "Test";
 
     await mdDatabase.create(req.body);
 
@@ -48,5 +50,21 @@ exports.deleteMd = async (req,res)=> {
     return res.status(400).json({
         success: false,
         message: "Post you're trying to delete isn't present or has already been deleted"
+    });
+}
+
+exports.addComment = async (req,res)=>{
+    const postToAddCommentIn = await mdDatabase.findById(req.params.id);
+    console.log(req.params.id);
+
+    console.log(req.body);
+
+    postToAddCommentIn.toObject().comment.push(req.body);
+
+    console.log(postToAddCommentIn.toObject().comment);
+
+    return res.status(201).json({
+        success:true ,
+        message:"Comment Has Been Successfully Added"
     });
 }

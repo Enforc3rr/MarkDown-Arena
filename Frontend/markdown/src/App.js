@@ -1,5 +1,4 @@
 import React from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
 import MakeMarkDown from './components/makePosts';
 import DisplayPosts from './components/displayPosts';
 import DisplayPost from './components/displayPost';

@@ -55,13 +55,12 @@ exports.deleteMd = async (req,res)=> {
 
 exports.addComment = async (req,res)=>{
     const postToAddCommentIn = await mdDatabase.findById(req.params.id);
-    console.log(req.params.id);
-
-    console.log(req.body);
-
-    postToAddCommentIn.toObject().comment.push(req.body);
-
-    console.log(postToAddCommentIn.toObject().comment);
+    postToAddCommentIn.comment.push(req.body);
+    await mdDatabase.findByIdAndUpdate(req.params.id,{
+        $set : {
+            "comment":postToAddCommentIn.comment
+        }
+    })
 
     return res.status(201).json({
         success:true ,

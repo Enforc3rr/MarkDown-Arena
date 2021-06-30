@@ -32,14 +32,18 @@ export default function MakeMarkDown() {
         .then((response) => {
             console.log(response);
             Swal.fire(response.data.message);
+            setTitle("");
+            setDescription("");
+            setTopic("");
+            setText("");
         });
 
     }
     return (
-        <div className="container border">
+        <div className="container border mt-3">
               <div className="form-group row">
                   <label className="col-sm-2 col-form-label col-form-label-lg">Title</label>
-                  <div className="col-sm-10">
+                  <div className="col-sm-10 mt-2">
                       <input type="text" className="form-control form-control-lg" value={title} placeholder="Title" onChange={e => setTitle(e.target.value)}/>
                     </div>
                 </div>

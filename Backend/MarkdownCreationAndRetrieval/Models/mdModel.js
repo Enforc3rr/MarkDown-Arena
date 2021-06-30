@@ -23,8 +23,8 @@ const mdSchema = new mongoose.Schema({
     likes : {
         type : Number
     },
-    comment : [{
-        type : String,
+    comment : {
+        type : Array,
         addedBy : {
             type : mongoose.Schema.Types.ObjectId ,
             ref : "User"
@@ -37,7 +37,7 @@ const mdSchema = new mongoose.Schema({
             type : Date,
             default: Date.now()
         }
-    }],
+    },
     dateOfCreation : {
         type : Date ,
         default : Date.now()

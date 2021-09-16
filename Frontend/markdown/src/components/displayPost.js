@@ -95,7 +95,7 @@ export default function DisplayPost() {
                                 </div>
                             </div>
                             )}
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
